@@ -1,0 +1,5 @@
+<aura:event type="COMPONENT" description="Modifying (i.e., creating, editing or deleting) the record">
+    
+    <!-- Attribute definition(s) -->
+    <aura:attribute name="result" type="sl2.DmlOperationResult"/>
+</aura:event>

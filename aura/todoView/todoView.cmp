@@ -1,0 +1,16 @@
+<aura:component implements="force:appHostable"
+                controller="sl2.TodoViewUtil">
+	
+    <!-- Component attributes -->
+    <aura:attribute name="newTask" type="Task"/>
+    <aura:attribute name="tasks" type="Task[]"/>
+    
+    <!-- Event handlers -->
+    <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/>
+    
+    <!-- UI elements -->
+    <sl2:todoTaskList items="{!v.tasks}"
+                      change="{!c.handleTaskListChange}"/>
+    <sl2:todoTaskListItem item="{!v.newTask}"
+                          create="{!c.handleNewTaskCreate}"/>
+</aura:component>

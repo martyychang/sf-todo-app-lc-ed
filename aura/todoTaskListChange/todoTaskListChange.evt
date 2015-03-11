@@ -1,0 +1,1 @@
+<aura:event type="COMPONENT" description="Change occurred in the list of tasks" />

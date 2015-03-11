@@ -1,0 +1,42 @@
+<aura:component controller="TodoTaskListItemUtil">
+    
+    <!-- Attribute definition(s) -->
+    <aura:attribute name="item" type="Task"/>
+    
+    <!-- Event registration(s) -->
+    <aura:registerEvent name="close"  type="sl2:todoTaskListItemModify"/>
+    <aura:registerEvent name="create" type="sl2:todoTaskListItemModify"/>
+    <aura:registerEvent name="delete" type="sl2:todoTaskListItemModify"/>
+    <aura:registerEvent name="edit"   type="sl2:todoTaskListItemModify"/>
+    <aura:registerEvent name="reopen" type="sl2:todoTaskListItemModify"/>
+    
+    <!-- UI element(s) -->
+    <div>
+        
+        <!-- Editable text -->
+        <ui:inputTextArea aura:id="subject"
+                          value="{!v.item.Subject}"
+                          change="{!c.handleSave}"
+                          disabled="{!v.item.IsClosed}"/>
+        
+        <!-- Save button -->
+        <ui:button label="Save" press="{!c.handleSave}"/>
+        
+        <!-- Other controls -->
+        <aura:if isTrue="{!v.item.Id != null}">
+            
+            <!-- Close button -->
+            <aura:if isTrue="{!v.item.IsClosed == false}">
+                <ui:button label="Close" press="{!c.handleClose}"/>
+            </aura:if>
+            
+            <!-- Reopen button -->
+            <aura:if isTrue="{!v.item.IsClosed}">
+                <ui:button label="Reopen" press="{!c.handleReopen}"/>
+            </aura:if>
+            
+            <!-- Trash button -->
+            <ui:button label="Trash" press="{!c.handleTrash}"/>
+        </aura:if>        
+    </div>
+</aura:component>
